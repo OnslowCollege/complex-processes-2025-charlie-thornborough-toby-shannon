@@ -29,6 +29,7 @@ module App =
         match msg with
         | Clicked -> { model with Count = model.Count + 1 }, [ SemanticAnnounce $"Clicked {model.Count} times" ]
 
+
     let view model =
         Application(
             ContentPage(
@@ -50,7 +51,7 @@ module App =
                             .centerTextHorizontal()
 
                         Label("Testy Test, this is freaking awesome Lois!")
-                            .font(size=24.)
+                            .font(size = 24.)
                             .centerTextHorizontal()
 
                         let text =
@@ -71,6 +72,10 @@ module App =
 
                         Button(counter, Clicked)
                             .centerHorizontal()
+
+                        Label("This is a message at the bottom left of the page!")
+                            .font(size=10.)
+
                     })
                         .padding(30., 0., 30., 0.)
                         .centerVertical()
