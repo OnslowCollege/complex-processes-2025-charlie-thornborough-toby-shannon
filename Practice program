@@ -1,0 +1,12 @@
+while true do
+    printfn "Enter something: "
+    let input = System.Console.ReadLine()
+    printfn "You entered %s!" input
+    if input.Length > 0  && input.Length < 32 then
+        match System.Int32.TryParse(input) with
+        | (true, value) ->
+            printfn "That was a number"
+        | (false, _) ->
+            printfn "That was not a number"
+    else
+        printfn "Too long"
