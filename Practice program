@@ -18,5 +18,6 @@ let rec loop () =
         printfn "Too long"
         // Continue the loop
         loop ()
+[<EntryPoint>]
 // Start the loop
 loop ()
