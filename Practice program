@@ -1,12 +1,22 @@
-while true do
+// Create a looping program
+let rec loop () =
     printfn "Enter something: "
+    // Read user input
     let input = System.Console.ReadLine()
     printfn "You entered %s!" input
     if input.Length > 0  && input.Length < 32 then
+        // Check if the user returned an integer, and reply with a boolean value
         match System.Int32.TryParse(input) with
         | (true, value) ->
+            // Tell the user that they entered a number
             printfn "That was a number"
         | (false, _) ->
             printfn "That was not a number"
+            // Continue the loop
+            loop ()
     else
         printfn "Too long"
+        // Continue the loop
+        loop ()
+// Start the loop
+loop ()
