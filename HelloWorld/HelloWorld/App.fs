@@ -31,38 +31,20 @@ module App =
 
     let view model =
         Application(
-            ContentPage(
-                ScrollView(
-                    (VStack(spacing = 25.) {
-                        Image("dotnet_bot.png")
-                            .semantics(description = "Cute dotnet bot waving hi to you!")
-                            .height(200.)
-                            .centerHorizontal()
-
-                        Label("Hello, World!")
-                            .semantics(SemanticHeadingLevel.Level1)
-                            .font(size = 32.)
-                            .centerTextHorizontal()
-
-                        Label("Welcome to .NET Multi-platform App UI powered by Fabulous")
-                            .semantics(SemanticHeadingLevel.Level2, "Welcome to dot net Multi platform App U I powered by Fabulous")
-                            .font(size = 18.)
-                            .centerTextHorizontal()
-
+            ContentPage(    
+                    (HStack(spacing = 10.) {
                         let text =
                             if model.Count = 0 then
-                                "Click me"
+                                "Folder"
                             else
-                                $"Clicked {model.Count} times"
+                                $"Entering a new Folder!"
 
                         Button(text, Clicked)
-                            .semantics(hint = "Counts the number of times you click")
-                            .centerHorizontal()
+                            .semantics(hint = "Enters a new folder.")
+                            .centerVertical()
                     })
-                        .padding(30., 0., 30., 0.)
-                        .centerVertical()
+                        .padding(10., 0., 10., 0.)
                 )
             )
-        )
 
     let program = Program.statefulWithCmdMsg init update view mapCmd

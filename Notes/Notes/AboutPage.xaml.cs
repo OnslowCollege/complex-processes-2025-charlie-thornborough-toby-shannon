@@ -1,6 +1,6 @@
 namespace Notes;
 
-public partial class AboutPage : ResourceDictionary
+public partial class AboutPage : ContentPage
 {
     private async void LearnMore_Clicked(object sender, EventArgs e)
     {
