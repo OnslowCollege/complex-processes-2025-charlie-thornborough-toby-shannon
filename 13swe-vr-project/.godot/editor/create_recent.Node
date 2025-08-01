@@ -1,0 +1,11 @@
+Node2D
+CollisionShape3D
+MeshInstance3D
+XRToolsPickable
+StaticBody3D
+Node3D
+WorldEnvironment
+DirectionalLight3D
+XRController3D
+XRCamera3D
+XROrigin3D
