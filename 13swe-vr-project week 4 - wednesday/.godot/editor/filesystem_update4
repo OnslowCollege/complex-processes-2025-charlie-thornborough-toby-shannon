@@ -1,0 +1,10 @@
+res://scenes/tree.tscn
+res://openxr_action_map.tres
+res://scripts/tree.gd
+res://scenes/folder.tscn
+res://scripts/folder.gd
+res://scripts/file.gd
+res://scenes/file.tscn
+res://scenes/main.tscn
+res://addons/godot-xr-tools/hands/animations/left/hand_blend_tree.tres
+res://addons/godot-xr-tools/hands/animations/right/hand_blend_tree.tres
