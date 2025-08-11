@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://blbdo36tx5gxi"]
+
+[ext_resource type="Script" uid="uid://byvdmiereanme" path="res://scripts/tree.gd" id="1_viusy"]
+[ext_resource type="PackedScene" uid="uid://dj0utaay8ee1k" path="res://scenes/folder.tscn" id="1_vplca"]
+[ext_resource type="PackedScene" uid="uid://d1eg4caq55mkj" path="res://scenes/file.tscn" id="2_viusy"]
+
+[node name="TreeObject" type="Node3D"]
+script = ExtResource("1_viusy")
+
+[node name="System32 Folder" parent="." groups=["TreeNodes"] instance=ExtResource("1_vplca")]
+
+[node name="File" parent="System32 Folder" groups=["TreeNodes"] instance=ExtResource("2_viusy")]
+
+[node name="Folder" parent="System32 Folder" groups=["TreeNodes"] instance=ExtResource("1_vplca")]
+
+[node name="File" parent="System32 Folder/Folder" groups=["TreeNodes"] instance=ExtResource("2_viusy")]
+
+[node name="Documents" parent="." groups=["TreeNodes"] instance=ExtResource("1_vplca")]
+
+[node name="File" parent="Documents" groups=["TreeNodes"] instance=ExtResource("2_viusy")]
