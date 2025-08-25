@@ -1,0 +1,102 @@
+[gd_scene load_steps=20 format=3 uid="uid://dlxokgpnj37"]
+
+[ext_resource type="Script" uid="uid://dqugr663nmciw" path="res://scripts/main.gd" id="1_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://clc5dre31iskm" path="res://addons/godot-xr-tools/xr/start_xr.tscn" id="2_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="3_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="4_trceg"]
+[ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="5_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="6_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://raeeicvvindd" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_hand.tscn" id="7_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="8_muem4"]
+[ext_resource type="PackedScene" uid="uid://clt88d5d1dje4" path="res://addons/godot-xr-tools/functions/movement_crouch.tscn" id="9_dp3eg"]
+[ext_resource type="Script" uid="uid://blhecewuewwk3" path="res://addons/godot-xr-tools/objects/pickable.gd" id="10_choun"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="10_eb6dy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_choun"]
+
+[sub_resource type="Sky" id="Sky_ya4ey"]
+sky_material = SubResource("ProceduralSkyMaterial_choun")
+
+[sub_resource type="Environment" id="Environment_gqmmt"]
+background_mode = 2
+background_color = Color(0.483338, 0.649368, 1, 1)
+sky = SubResource("Sky_ya4ey")
+
+[sub_resource type="BoxMesh" id="BoxMesh_yc10j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jscy8"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_pm3ni"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_choun"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eb6dy"]
+
+[node name="main" type="Node3D"]
+script = ExtResource("1_ya4ey")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34229, 0.492192)
+
+[node name="StartXR" parent="XROrigin3D/XRCamera3D" instance=ExtResource("2_ya4ey")]
+
+[node name="Left Hand" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.183259, 1.14782, 0)
+tracker = &"left_hand"
+
+[node name="LeftHand" parent="XROrigin3D/Left Hand" instance=ExtResource("3_eb6dy")]
+
+[node name="MovementDirect" parent="XROrigin3D/Left Hand" instance=ExtResource("4_trceg")]
+
+[node name="MovementJump" parent="XROrigin3D/Left Hand" instance=ExtResource("5_a8y0u")]
+
+[node name="FunctionPickup" parent="XROrigin3D/Left Hand" instance=ExtResource("6_jkv2x")]
+
+[node name="Right Hand" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.196239, 1.14782, 0)
+tracker = &"right_hand"
+
+[node name="RightHand" parent="XROrigin3D/Right Hand" instance=ExtResource("7_jbj1t")]
+
+[node name="MovementTurn" parent="XROrigin3D/Right Hand" instance=ExtResource("8_muem4")]
+
+[node name="MovementCrouch" parent="XROrigin3D/Right Hand" instance=ExtResource("9_dp3eg")]
+
+[node name="FunctionPickup" parent="XROrigin3D/Right Hand" instance=ExtResource("6_jkv2x")]
+
+[node name="PlayerBody" parent="XROrigin3D" instance=ExtResource("10_eb6dy")]
+
+[node name="Worldbuilder" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Worldbuilder"]
+transform = Transform3D(-4.33785e-08, 0.13677, -0.990603, 5.38462e-09, 0.990603, 0.13677, 1, 5.98861e-10, -4.37073e-08, -134.183, 57.2897, -2.97059)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Worldbuilder"]
+environment = SubResource("Environment_gqmmt")
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Objects"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/StaticBody3D"]
+transform = Transform3D(245.834, 0, 0, 0, 0.00611914, 0, 0, 0, 207.932, 0, 0, 0)
+mesh = SubResource("BoxMesh_yc10j")
+surface_material_override/0 = SubResource("StandardMaterial3D_jscy8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_pm3ni")
+
+[node name="Cube" type="RigidBody3D" parent="Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.20998, 0)
+script = ExtResource("10_choun")
+metadata/_custom_type_script = "uid://blhecewuewwk3"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Cube"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -7.93343, -0.214003)
+mesh = SubResource("BoxMesh_choun")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Cube"]
+shape = SubResource("BoxShape3D_eb6dy")
