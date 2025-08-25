@@ -23,12 +23,19 @@ script = ExtResource("1_viusy")
 [node name="Folder&Files" type="Node3D" parent="."]
 
 [node name="Root" parent="Folder&Files" instance=ExtResource("1_vplca")]
+is_root = true
 
 [node name="System32" parent="Folder&Files/Root" instance=ExtResource("1_vplca")]
-
-[node name="File" parent="Folder&Files/Root/System32" instance=ExtResource("2_viusy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 
 [node name="Documents" parent="Folder&Files/Root" instance=ExtResource("1_vplca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="Folder" parent="Folder&Files/Root/Documents" instance=ExtResource("1_vplca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="File" parent="Folder&Files/Root/Documents/Folder" instance=ExtResource("2_viusy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00152922, 2.38419e-07, 1.99046)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
@@ -38,4 +45,4 @@ shadow_enabled = true
 environment = SubResource("Environment_ake3r")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.917, 1.857, 3.38575)
+transform = Transform3D(-3.8488e-08, 0.474042, -0.880502, 2.0721e-08, 0.880502, 0.474042, 1, 0, -4.37114e-08, -6.31159, 3.7759, 3.38575)
